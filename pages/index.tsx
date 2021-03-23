@@ -3,8 +3,10 @@ import { useState } from 'react';
 import Head from 'next/head';
 import axios from 'axios';
 
+import { Header } from '../components';
+
 interface HomeProps {
-	data: Data;
+	data: Data | undefined;
 }
 interface Data {
 	ip: string;
@@ -29,11 +31,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
 				ipAddress: ''
 			}
 		});
-		console.log(response.data);
 
 		return {
 			props: {
-				data: response.data
+				data: response.data as Data
 			}
 		};
 	} catch (error) {
@@ -56,7 +57,10 @@ const Home: React.FC<HomeProps> = ({ data }) => {
 				<title>IP Address Tracker</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<h1>Project Start</h1>
+			<Header
+				title="IP Address Tracker"
+				placeholder="Search for any IP address or domain"
+			/>
 		</div>
 	);
 };
