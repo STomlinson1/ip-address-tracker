@@ -1,24 +1,20 @@
 import { useEffect } from 'react';
-import L from 'leaflet';
-import * as ReactLeaflet from 'react-leaflet';
+import { LatLngExpression, Icon } from 'leaflet';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import s from './Map.module.scss';
 
-const { MapContainer } = ReactLeaflet;
+interface MapProps {
+	center: LatLngExpression;
+}
 
-const Map = ({ children, className, ...rest }) => {
-	let mapClassName = s.map;
-
-	if (className) {
-		mapClassName = `${mapClassName} ${className}`;
-	}
-
+const Map: React.FC<MapProps> = ({ center }) => {
 	useEffect(() => {
 		// @ts-ignore
-		delete L.Icon.Default.prototype._getIconUrl;
+		delete Icon.Default.prototype._getIconUrl;
 
-		L.Icon.Default.mergeOptions({
+		Icon.Default.mergeOptions({
 			iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
 			iconUrl: require('leaflet/dist/images/marker-icon.png'),
 			shadowUrl: require('leaflet/dist/images/marker-shadow.png')
@@ -26,8 +22,16 @@ const Map = ({ children, className, ...rest }) => {
 	}, []);
 
 	return (
-		<MapContainer className={mapClassName} {...rest}>
-			{children(ReactLeaflet)}
+		<MapContainer className={s.map} zoom={16} center={center}>
+			<TileLayer
+				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+				attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+			/>
+			<Marker position={center}>
+				<Popup>
+					A pretty CSS3 popup. <br /> Easily customizable.
+				</Popup>
+			</Marker>
 		</MapContainer>
 	);
 };

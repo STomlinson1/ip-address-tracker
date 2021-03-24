@@ -1,7 +1,7 @@
-import s from './Header.module.scss';
 import { useState } from 'react';
 import Image from 'next/image';
 
+import s from './Header.module.scss';
 interface HeaderProps {
 	title: string;
 	placeholder: string;
