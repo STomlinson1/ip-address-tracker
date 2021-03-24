@@ -6,13 +6,14 @@
 	text-align: center;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	padding: 0 1rem;
+	position: relative;
 
 	.heading {
 		color: $white;
 		font-size: $heading-l;
 		font-weight: 400;
-		margin-bottom: 2rem;
+		margin: 2rem 0;
 	}
 
 	.container {
@@ -27,15 +28,22 @@
 		height: 5rem;
 		border: none;
 		border-radius: 15px;
+		padding: 0 2rem;
+		font-size: $fontsize-medium;
 	}
 
 	.button {
+		background: $black;
 		position: absolute;
 		top: 0;
 		right: 0;
 		height: 5rem;
-		width: 7rem;
+		width: 5rem;
 		border: none;
 		border-radius: 0 15px 15px 0;
+
+		&:hover {
+			cursor: pointer;
+		}
 	}
 }
