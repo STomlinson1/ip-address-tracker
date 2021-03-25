@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next';
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import Head from 'next/head';
 import axios from 'axios';
 import { LatLngExpression } from 'leaflet';
@@ -38,6 +38,25 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 const Home: React.FC<HomeProps> = ({ data }) => {
 	const [ ipData, setIpData ] = useState(data);
+
+	useEffect(() => {
+		const getUserData = async () => {
+			try {
+				const response = await axios.get('https://geo.ipify.org/api/v1', {
+					params: {
+						apiKey: process.env.NEXT_PUBLIC_API_KEY,
+						ipAddress: ''
+					}
+				});
+
+				setIpData(response.data);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+
+		getUserData();
+	}, []);
 
 	const latLng: LatLngExpression = [ ipData.location.lat, ipData.location.lng ];
 
