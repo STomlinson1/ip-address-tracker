@@ -1,5 +1,11 @@
+@use '../../styles/abstracts' as *;
+
 .map {
-	height: 70vh;
+	height: 60vh;
 	width: 100%;
 	z-index: 0;
+
+	@media screen and (min-width: $breakpoint-md) {
+		height: 70vh;
+	}
 }

@@ -38,7 +38,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 const Home: React.FC<HomeProps> = ({ data }) => {
 	const [ ipData, setIpData ] = useState(data);
-	console.log(ipData);
 
 	const latLng: LatLngExpression = [ ipData.location.lat, ipData.location.lng ];
 
@@ -50,7 +49,8 @@ const Home: React.FC<HomeProps> = ({ data }) => {
 			</Head>
 			<Header
 				title="IP Address Tracker"
-				placeholder="Search for any IP address or domain"
+				placeholder="Search for any IP address"
+				setIpData={setIpData}
 			>
 				<Display ip={ipData.ip} location={ipData.location} isp={ipData.isp} />
 			</Header>

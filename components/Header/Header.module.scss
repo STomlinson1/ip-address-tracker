@@ -1,19 +1,27 @@
 @use '../../styles/abstracts' as *;
 
 .header {
-	height: 30vh;
+	height: 40vh;
 	background: url('../../public/images/pattern-bg.png') center center/cover no-repeat;
 	display: flex;
 	flex-direction: column;
 	padding: 0 2rem;
 	position: relative;
 
+	@media screen and (min-width: $breakpoint-md) {
+		height: 30vh;
+	}
+
 	.heading {
 		text-align: center;
 		color: $white;
-		font-size: $heading-l;
+		font-size: $heading-md;
 		font-weight: 400;
 		margin: 2rem 0;
+
+		@media screen and (min-width: $breakpoint-md) {
+			font-size: $heading-l;
+		}
 	}
 
 	.container {
@@ -29,7 +37,7 @@
 		border: none;
 		border-radius: 15px;
 		padding: 0 2rem;
-		font-size: $fontsize-m;
+		font-size: $fontsize-md;
 	}
 
 	.button {

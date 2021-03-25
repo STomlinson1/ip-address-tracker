@@ -14,7 +14,7 @@ const Display: React.FC<Data> = ({ ip, isp, location }) => {
 				<article className={s.card}>
 					<p className={s.label}>location</p>
 					<p className={s.text}>
-						{city} {region} {postalCode}
+						{city}, {region} {postalCode}
 					</p>
 				</article>
 				<div className={s.divider} />

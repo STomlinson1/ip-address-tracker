@@ -5,32 +5,57 @@
 	bottom: 0;
 	left: 50%;
 	transform: translateX(-50%) translateY(50%);
-	max-width: 120rem;
+	max-width: 54rem;
 	width: 100%;
 	padding: 0 2rem;
 	z-index: 100;
 
+	@media screen and (min-width: $breakpoint-md) {
+		max-width: 120rem;
+	}
+
 	.container {
 		width: 100%;
 		min-height: 15rem;
-		padding: 3rem;
+		padding: 1.5rem;
 		background-color: $white;
 		border-radius: 25px;
 		display: flex;
+		flex-direction: column;
 		justify-content: space-between;
 		align-items: center;
+
+		@media screen and (min-width: $breakpoint-md) {
+			flex-direction: row;
+			padding: 3rem;
+		}
 	}
 
 	.divider {
 		height: 7rem;
 		width: 1px;
 		background-color: $gray;
+		display: none;
+
+		@media screen and (min-width: $breakpoint-md) {
+			display: block;
+		}
 	}
 
 	.card {
-		width: 22%;
-		// background-color: pink;
-		min-height: 7rem;
+		width: 100%;
+		text-align: center;
+		margin-top: 1rem;
+
+		&:nth-child(1) {
+			margin-top: 0;
+		}
+
+		@media screen and (min-width: $breakpoint-md) {
+			width: 22%;
+			text-align: left;
+			min-height: 7rem;
+		}
 
 		.label {
 			font-size: $fontsize-s;
@@ -40,9 +65,13 @@
 		}
 
 		.text {
-			font-size: $fontsize-l;
+			font-size: $fontsize-md;
 			color: $black;
 			font-weight: 700;
+
+			@media screen and (min-width: $breakpoint-md) {
+				font-size: $fontsize-l;
+			}
 		}
 	}
 }

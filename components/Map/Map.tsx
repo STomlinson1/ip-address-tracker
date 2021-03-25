@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { LatLngExpression, Icon } from 'leaflet';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import s from './Map.module.scss';
@@ -8,6 +8,12 @@ import s from './Map.module.scss';
 interface MapProps {
 	center: LatLngExpression;
 }
+
+const ChangeView = ({ center, zoom }) => {
+	const map = useMap();
+	map.setView(center, zoom);
+	return null;
+};
 
 const Map: React.FC<MapProps> = ({ center }) => {
 	useEffect(() => {
@@ -23,14 +29,15 @@ const Map: React.FC<MapProps> = ({ center }) => {
 
 	return (
 		<MapContainer className={s.map} zoom={16} center={center}>
+			<ChangeView center={center} zoom={16} />
 			<TileLayer
 				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
 			/>
 			<Marker position={center}>
-				<Popup>
+				{/* <Popup>
 					A pretty CSS3 popup. <br /> Easily customizable.
-				</Popup>
+				</Popup> */}
 			</Marker>
 		</MapContainer>
 	);
