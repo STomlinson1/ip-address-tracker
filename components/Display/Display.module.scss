@@ -5,16 +5,44 @@
 	bottom: 0;
 	left: 50%;
 	transform: translateX(-50%) translateY(50%);
-	max-width: 100rem;
+	max-width: 120rem;
 	width: 100%;
 	padding: 0 2rem;
 	z-index: 100;
 
 	.container {
 		width: 100%;
-		min-height: 17rem;
-
+		min-height: 15rem;
+		padding: 3rem;
 		background-color: $white;
 		border-radius: 25px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.divider {
+		height: 7rem;
+		width: 1px;
+		background-color: $gray;
+	}
+
+	.card {
+		width: 22%;
+		// background-color: pink;
+		min-height: 7rem;
+
+		.label {
+			font-size: $fontsize-s;
+			color: $gray;
+			text-transform: uppercase;
+			letter-spacing: 0.1rem;
+		}
+
+		.text {
+			font-size: $fontsize-l;
+			color: $black;
+			font-weight: 700;
+		}
 	}
 }

@@ -5,25 +5,12 @@ import axios from 'axios';
 import { LatLngExpression } from 'leaflet';
 
 import { Display, Header, Map } from '../components';
+import { Data } from '../types';
 
 const DEFAULT_CENTER: LatLngExpression = [ 38.907132, -77.036546 ];
 
 interface HomeProps {
 	data: Data | undefined;
-}
-interface Data {
-	ip: string;
-	location: {
-		country: string;
-		region: string;
-		city: string;
-		lat: number;
-		lng: number;
-		postalCode: string;
-		timezone: string;
-		geonameId: number;
-	};
-	isp: string;
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -51,8 +38,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 const Home: React.FC<HomeProps> = ({ data }) => {
 	const [ ipData, setIpData ] = useState(data);
-
 	console.log(ipData);
+
+	const latLng: LatLngExpression = [ ipData.location.lat, ipData.location.lng ];
 
 	return (
 		<Fragment>
@@ -64,9 +52,9 @@ const Home: React.FC<HomeProps> = ({ data }) => {
 				title="IP Address Tracker"
 				placeholder="Search for any IP address or domain"
 			>
-				<Display />
+				<Display ip={ipData.ip} location={ipData.location} isp={ipData.isp} />
 			</Header>
-			<Map center={DEFAULT_CENTER} />
+			<Map center={latLng || DEFAULT_CENTER} />
 		</Fragment>
 	);
 };

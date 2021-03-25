@@ -3,13 +3,13 @@
 .header {
 	height: 30vh;
 	background: url('../../public/images/pattern-bg.png') center center/cover no-repeat;
-	text-align: center;
 	display: flex;
 	flex-direction: column;
 	padding: 0 2rem;
 	position: relative;
 
 	.heading {
+		text-align: center;
 		color: $white;
 		font-size: $heading-l;
 		font-weight: 400;
@@ -29,7 +29,7 @@
 		border: none;
 		border-radius: 15px;
 		padding: 0 2rem;
-		font-size: $fontsize-medium;
+		font-size: $fontsize-m;
 	}
 
 	.button {
