@@ -1,3 +1,14 @@
+IP Address tracking application built with React, Next, TypeScript, Leaflet, and the IP Geoloaction API.
+
+Live site can be found [here](https://ip-address-tracker-bbk9z2rjl-stomlinson1.vercel.app/).
+
+[React](https://reactjs.org/)\
+[Next](https://nextjs.org/)\
+[IP Geolocation API](https://geo.ipify.org/docs)\
+[Leaflet](https://leafletjs.com/examples/quick-start/)\
+[React Leaflet](https://react-leaflet.js.org/)
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
