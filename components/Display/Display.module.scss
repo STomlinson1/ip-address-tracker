@@ -1,0 +1,20 @@
+@use '../../styles/abstracts' as *;
+
+.display {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%) translateY(50%);
+	max-width: 100rem;
+	width: 100%;
+	padding: 0 2rem;
+	z-index: 100;
+
+	.container {
+		width: 100%;
+		min-height: 17rem;
+
+		background-color: $white;
+		border-radius: 25px;
+	}
+}

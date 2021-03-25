@@ -4,7 +4,7 @@ import Head from 'next/head';
 import axios from 'axios';
 import { LatLngExpression } from 'leaflet';
 
-import { Header, Map } from '../components';
+import { Display, Header, Map } from '../components';
 
 const DEFAULT_CENTER: LatLngExpression = [ 38.907132, -77.036546 ];
 
@@ -63,7 +63,9 @@ const Home: React.FC<HomeProps> = ({ data }) => {
 			<Header
 				title="IP Address Tracker"
 				placeholder="Search for any IP address or domain"
-			/>
+			>
+				<Display />
+			</Header>
 			<Map center={DEFAULT_CENTER} />
 		</Fragment>
 	);
